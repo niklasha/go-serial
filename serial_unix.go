@@ -118,11 +118,11 @@ func (port *unixPort) Write(p []byte) (n int, err error) {
 }
 
 func (port *unixPort) ResetInputBuffer() error {
-	return unix.IoctlSetInt(port.handle, ioctlTcflsh, unix.TCIFLUSH)
+	return unix.IoctlSetPointerInt(port.handle, ioctlTcflsh, unix.TCIFLUSH)
 }
 
 func (port *unixPort) ResetOutputBuffer() error {
-	return unix.IoctlSetInt(port.handle, ioctlTcflsh, unix.TCOFLUSH)
+	return unix.IoctlSetPointerInt(port.handle, ioctlTcflsh, unix.TCOFLUSH)
 }
 
 func (port *unixPort) SetMode(mode *Mode) error {
