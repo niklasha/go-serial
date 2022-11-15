@@ -31,7 +31,10 @@ const tcCRTSCTS uint32 = tcCCTS_OFLOW
 
 const ioctlTcgetattr = unix.TIOCGETA
 const ioctlTcsetattr = unix.TIOCSETA
-const ioctlTcflsh = unix.TIOCFLUSH
+
+func tcFlush(handle int, action int) error {
+     return unix.IoctlSetPointerInt(handle, unix.TIOCFLUSH, action)
+}
 
 func toTermiosSpeedType(speed int) int32 {
 	return int32(speed)
