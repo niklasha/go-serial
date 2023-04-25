@@ -49,7 +49,7 @@ func setTermSettingsBaudrate(speed int, settings *unix.Termios) (error, bool) {
 	return nil, false
 }
 
+// There is no such thing as a special baudrate on OpenBSD
 func (port *unixPort) setSpecialBaudrate(speed uint32) error {
-	// TODO: unimplemented
 	return &PortError{code: InvalidSpeed}
 }
